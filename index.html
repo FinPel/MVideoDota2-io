@@ -10,7 +10,7 @@
 </head>
 <body>
   <header>
-    <button class="register-btn">Зарегистрироваться</button>
+    <button class="register-btn" id="register-btn">Зарегистрироваться</button>
   </header>
 
   <nav>
@@ -133,6 +133,7 @@
   </div>
 
   <script>
+    // Открытие модалок
     const modalGroups = document.getElementById('modal-groups');
     const modalPlayoff = document.getElementById('modal-playoff');
     const modalSponsor = document.getElementById('modal-sponsor');
@@ -159,6 +160,7 @@
       modalRules.querySelector('.modal').focus();
     });
 
+    // Закрытие модалок
     const closeButtons = document.querySelectorAll('.close-btn');
     closeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -186,6 +188,11 @@
           }
         });
       }
+    });
+
+    // Переход по кнопке "Зарегистрироваться" на Telegram-бота
+    document.getElementById('register-btn').addEventListener('click', function() {
+      window.open('https://t.me/MVideoDota2_bot', '_blank');
     });
   </script>
 </body>
