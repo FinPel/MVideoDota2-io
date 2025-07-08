@@ -6,6 +6,16 @@
   0%, 100% { transform: scale(1);}
   50% { transform: scale(1.03);}
 }
+@keyframes buttonGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px 2px rgba(255,255,255,0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 15px 4px rgba(255,255,255,1);
+    transform: scale(1.05);
+  }
+}
 body {
   background: linear-gradient(135deg, #2c0404 0%, #7c2323 100%);
   color: #fff;
@@ -19,9 +29,9 @@ body {
   flex-direction: column;
 }
 header {
-  height: 70vh; /* увеличена высота шапки для полного отображения картинки */
+  height: 70vh;
   position: relative;
-  background: url('Шапка.jpg') no-repeat center center/contain; /* Замените на путь к вашей картинке */
+  background: url('Шапка.jpg') no-repeat center center/contain;
   border-bottom: 5px solid #d7263d;
   display: flex;
   align-items: flex-end;
@@ -35,6 +45,13 @@ header::before {
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(44,4,4,0.6);
   z-index: 0;
+}
+.header-btns {
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  z-index: 2;
 }
 .register-btn {
   position: relative;
@@ -52,8 +69,6 @@ header::before {
   animation: pulse 2s infinite;
   transition: all 0.3s ease;
   user-select: none;
-  margin-bottom: 10px;
-  margin-right: 10px;
   text-shadow: 0 0 8px #ff0000;
   letter-spacing: 0.05em;
 }
@@ -63,7 +78,51 @@ header::before {
   border-color: #ff4a4a;
   background: linear-gradient(90deg, #ff0000 0%, #ff7373 100%);
 }
-
+.stream-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  padding: 14px 36px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #7b2ff2 0%, #f357ff 100%);
+  color: #fff;
+  border: 3px solid #7b2ff2;
+  cursor: pointer;
+  box-shadow: 0 8px 28px #7b2ff299;
+  margin-bottom: 0;
+  transition: all 0.3s;
+  text-shadow: 0 0 8px #7b2ff2;
+  letter-spacing: 0.04em;
+  animation: buttonGlow 3s ease-in-out infinite;
+}
+.stream-btn:hover {
+  background: linear-gradient(90deg, #a259f7 0%, #c471ed 100%);
+  border-color: #a259f7;
+  transform: translateY(-4px) scale(1.04);
+}
+.channel-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  padding: 14px 36px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
+  color: #fff;
+  border: 3px solid #007bff;
+  cursor: pointer;
+  box-shadow: 0 8px 28px #007bff99;
+  margin-bottom: 0;
+  transition: all 0.3s;
+  text-shadow: 0 0 8px #007bff;
+  letter-spacing: 0.04em;
+  animation: buttonGlow 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+.channel-btn:hover {
+  background: linear-gradient(90deg, #005bea 0%, #3ec6e0 100%);
+  border-color: #005bea;
+  transform: translateY(-4px) scale(1.04);
+}
 nav {
   display: flex;
   justify-content: center;
@@ -91,11 +150,8 @@ nav a:hover {
   border-color: #ff4a4a;
   transform: translateY(-3px);
 }
-.motivation {
-  display: none;
-}
-
 .bottom-bg {
+  position: relative;
   background: url('https://img.championat.com/s/1350x900/news/big/e/k/pgl-arlington-major-2022-po-dota-2-raspisanie-pyatogo-dnya-i-pryamye-translyacii_1659970205841999375.jpg') no-repeat center center/cover;
   height: 65vh;
   box-shadow: inset 0 0 60px 20px rgba(44,4,4,0.8);
@@ -103,6 +159,29 @@ nav a:hover {
   flex-shrink: 0;
   margin: 0;
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 40px;
+}
+.bottom-text {
+  max-width: 900px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #ffd6d6;
+  text-align: center;
+  line-height: 1.6;
+  padding: 30px 40px;
+  background: rgba(124, 35, 35, 0.75);
+  border: 3px solid #ff0000;
+  border-radius: 20px;
+  text-shadow:
+    -2px -2px 3px #7c0000,
+    2px -2px 3px #7c0000,
+    -2px 2px 3px #7c0000,
+    2px 2px 3px #7c0000;
+  user-select: none;
+  animation: fadeIn 2s ease forwards;
 }
 
 /* Модальные окна */
@@ -122,42 +201,47 @@ nav a:hover {
   border: 3px solid #d7263d;
   border-radius: 14px;
   box-shadow: 0 6px 30px #d7263d88;
-  max-width: 95vw;
-  max-height: 90vh;
+  max-width: 1000px;
+  width: 90vw;
+  max-height: 95vh;
   overflow-y: auto;
-  padding: 30px 24px;
+  padding: 40px 36px;
   color: #fff;
   animation: fadeIn 0.5s ease-out;
   position: relative;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 .modal h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
   text-shadow: 0 2px 8px #8b0000;
   font-weight: 700;
   border: 2px solid #d7263d;
   border-radius: 12px;
-  padding: 8px 16px;
+  padding: 12px 24px;
+  font-size: 2rem;
 }
 .close-btn {
   position: absolute;
-  top: 12px;
-  right: 16px;
+  top: 18px;
+  right: 28px;
   background: #d7263d;
   border: none;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   transition: background 0.3s ease;
-  line-height: 28px;
+  line-height: 36px;
   text-align: center;
   padding: 0;
   flex-shrink: 0;
@@ -166,90 +250,18 @@ nav a:hover {
   background: #ff0000;
 }
 
-/* Группы */
-.groups {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  width: 100%;
-  padding-bottom: 10px;
-}
-.group {
-  flex: 0 0 320px;
-  min-width: 320px;
-  background: linear-gradient(135deg, #7c2323 0%, #ff0000 100%);
-  border: 3px solid #d7263d;
-  border-radius: 14px;
-  box-shadow: 0 4px 16px #d7263d55;
-  color: #fff;
-  padding: 20px 16px;
-  animation: fadeIn 1.6s ease-out;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  font-size: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Montserrat', sans-serif;
-}
-.group:hover {
-  box-shadow: 0 8px 30px #d7263d99;
-  transform: translateY(-5px);
-}
-.group h2 {
-  color: #fff;
-  margin-bottom: 16px;
-  font-size: 1.3rem;
-  text-align: center;
-  text-shadow: 0 2px 8px #8b0000;
-  font-weight: 700;
-  border: 2px solid #d7263d;
-  border-radius: 10px;
-  padding: 6px 12px;
-}
-.team-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 8px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'Roboto', sans-serif;
-}
-.team-table th, .team-table td {
-  padding: 8px 10px;
-  text-align: center;
-  vertical-align: middle;
-  font-weight: 400;
-}
-.team-table th {
-  background: linear-gradient(90deg, #ff0000 0%, #d7263d 100%);
-  color: #fff;
-  font-weight: 600;
-  border-bottom: 2px solid #fff2;
-}
-.team-table tr:nth-child(even) {
-  background: rgba(255,255,255,0.03);
-}
-.team-table tr:hover {
-  background: #d7263d66;
-}
-
-/* Плей-офф */
+/* Плей-офф/Турнирная таблица */
 .playoff {
   background: linear-gradient(135deg, #3a0202 0%, #ff0000 100%);
   border: 3px solid #d7263d;
   border-radius: 14px;
-  padding: 30px 20px;
+  padding: 40px 30px;
   max-width: 100%;
   box-shadow: 0 6px 30px #d7263d88;
   animation: fadeIn 1.8s ease-out;
   color: #fff;
   transition: box-shadow 0.3s ease;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -263,27 +275,27 @@ nav a:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 32px;
+  gap: 48px;
   flex-wrap: nowrap;
   overflow-x: auto;
   padding-bottom: 10px;
   width: 100%;
 }
 .round {
-  flex: 0 0 250px;
-  margin: 0 12px;
-  min-width: 250px;
+  flex: 0 0 320px;
+  margin: 0 18px;
+  min-width: 320px;
 }
 .match {
   background: #d7263d;
   color: #fff;
-  margin: 30px 0;
-  padding: 18px 14px;
-  border-radius: 10px;
+  margin: 40px 0;
+  padding: 26px 20px;
+  border-radius: 14px;
   text-align: center;
   font-weight: bold;
   border: 2px solid #ff0000;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   transition: all 0.3s ease;
   font-family: 'Montserrat', sans-serif;
 }
@@ -295,9 +307,9 @@ nav a:hover {
 
 /* Спонсор */
 .sponsor-logo {
-  max-width: 300px;
+  max-width: 350px;
   margin: 0 auto;
-  padding: 15px;
+  padding: 20px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px #d7263d33;
@@ -311,13 +323,13 @@ nav a:hover {
   border-radius: 8px;
 }
 .sponsor p {
-  margin-top: 20px;
+  margin-top: 28px;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-family: 'Roboto', sans-serif;
   border: 2px solid #d7263d;
   border-radius: 12px;
-  padding: 10px 16px;
+  padding: 16px 22px;
   background: linear-gradient(90deg, #7c1c1c, #d7263d);
   box-shadow: 0 0 10px #d7263daa;
 }
@@ -327,62 +339,94 @@ nav a:hover {
   background: linear-gradient(90deg, #ff0000 0%, #d7263d 100%);
   color: #fff;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 900px;
   border-radius: 14px;
-  padding: 28px 32px;
-  font-size: 1.25rem;
+  padding: 36px 40px;
+  font-size: 1.35rem;
   box-shadow: 0 4px 24px #381e1c44;
   text-align: center;
   font-weight: 600;
   animation: fadeIn 1.4s ease-out;
   position: relative;
-  line-height: 1.5;
+  line-height: 1.6;
   overflow-wrap: break-word;
   font-family: 'Roboto', sans-serif;
   border: 3px solid #d7263d;
 }
 .rules-section ul {
   text-align: left;
-  padding-left: 20px;
+  padding-left: 28px;
   margin-top: 0;
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 .rules-section ul li {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 .rules-section p {
-  margin-top: 18px;
+  margin-top: 24px;
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   border-top: 2px solid #d7263d;
-  padding-top: 12px;
+  padding-top: 16px;
 }
 
 /* Адаптивность */
+@media (max-width: 1200px) {
+  .modal {
+    max-width: 98vw;
+    width: 98vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 24px 8px;
+  }
+}
 @media (max-width: 900px) {
   header {
     flex-direction: column;
     padding: 20px;
     height: auto;
   }
-  .register-btn {
-    margin: 15px 0 0 0;
-    align-self: center;
+  .header-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .register-btn, .stream-btn, .channel-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  .bottom-text {
+    font-size: 1.3rem;
+    max-width: 90vw;
+    padding: 20px 25px;
+  }
+  .modal {
+    max-width: 99vw;
+    width: 99vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 18px 4px;
   }
 }
 @media (max-width: 700px) {
-  .register-btn {
+  .register-btn, .stream-btn, .channel-btn {
     font-size: 1rem;
     padding: 10px 28px;
   }
-  .rules-section {
-    font-size: 1rem;
-    padding: 20px 16px;
-    max-width: 95vw;
+  .bottom-text {
+    font-size: 1.1rem;
+    padding: 16px 18px;
   }
-  .sponsor p {
-    font-size: 1rem;
-    padding: 8px 12px;
+  .modal {
+    max-width: 100vw;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 8px 2px;
   }
 }

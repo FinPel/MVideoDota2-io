@@ -3,79 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <title>Турнир Dota 2 x М.Видео–Эльдорадо</title>
-  <!-- Подключение шрифтов Google -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet" />
-  <!-- Подключение внешнего CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&family=Playfair+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <button class="register-btn" id="register-btn">Зарегистрироваться</button>
+    <div class="header-btns">
+      <button class="register-btn" id="register-btn">Зарегистрироваться</button>
+      <button class="stream-btn" id="stream-btn">Смотреть трансляцию</button>
+      <button class="channel-btn" id="channel-btn">Канал</button>
+    </div>
   </header>
 
   <nav>
-    <a id="open-groups">Группы</a>
-    <a id="open-playoff">Плей-офф</a>
+    <a id="open-tournament">Турнирная таблица</a>
     <a id="open-rules">Правила</a>
     <a id="open-sponsor">Спонсор</a>
   </nav>
 
-  <div class="bottom-bg"></div>
-
-  <!-- Модальные окна -->
-  <div class="modal-overlay" id="modal-groups" role="dialog" aria-modal="true" aria-labelledby="groups-title" tabindex="-1">
-    <div class="modal" tabindex="0">
-      <button class="close-btn" aria-label="Закрыть">&times;</button>
-      <h2 id="groups-title">Группы</h2>
-      <div class="groups">
-        <div class="group">
-          <h2>Группа A</h2>
-          <table class="team-table">
-            <tr><th>Команда</th><th>Очки</th><th>Сыграно</th></tr>
-            <tr><td>Team Alpha</td><td>6</td><td>3</td></tr>
-            <tr><td>Team Bravo</td><td>4</td><td>3</td></tr>
-            <tr><td>Team Charlie</td><td>2</td><td>3</td></tr>
-            <tr><td>Team Delta</td><td>0</td><td>3</td></tr>
-          </table>
-        </div>
-        <div class="group">
-          <h2>Группа B</h2>
-          <table class="team-table">
-            <tr><th>Команда</th><th>Очки</th><th>Сыграно</th></tr>
-            <tr><td>Team Echo</td><td>5</td><td>3</td></tr>
-            <tr><td>Team Foxtrot</td><td>4</td><td>3</td></tr>
-            <tr><td>Team Golf</td><td>3</td><td>3</td></tr>
-            <tr><td>Team Hotel</td><td>2</td><td>3</td></tr>
-          </table>
-        </div>
-        <div class="group">
-          <h2>Группа C</h2>
-          <table class="team-table">
-            <tr><th>Команда</th><th>Очки</th><th>Сыграно</th></tr>
-            <tr><td>Team India</td><td>6</td><td>3</td></tr>
-            <tr><td>Team Juliet</td><td>4</td><td>3</td></tr>
-            <tr><td>Team Kilo</td><td>2</td><td>3</td></tr>
-            <tr><td>Team Lima</td><td>0</td><td>3</td></tr>
-          </table>
-        </div>
-        <div class="group">
-          <h2>Группа D</h2>
-          <table class="team-table">
-            <tr><th>Команда</th><th>Очки</th><th>Сыграно</th></tr>
-            <tr><td>Team Mike</td><td>5</td><td>3</td></tr>
-            <tr><td>Team November</td><td>4</td><td>3</td></tr>
-            <tr><td>Team Oscar</td><td>3</td><td>3</td></tr>
-            <tr><td>Team Papa</td><td>2</td><td>3</td></tr>
-          </table>
-        </div>
-      </div>
+  <div class="bottom-bg">
+    <div class="bottom-text">
+      Добро пожаловать на главный киберспортивный турнир года для сотрудников М.Видео–Эльдорадо!<br>
+      Это твой шанс проявить командный дух, стратегическое мышление и любовь к Dota 2.<br>
+      Сразись с коллегами, пройди групповой этап и докажи, что именно ваша команда достойна титула сильнейшей!<br>
+      Побеждай, вдохновляй и стань частью легенды!
     </div>
   </div>
 
-  <div class="modal-overlay" id="modal-playoff" role="dialog" aria-modal="true" aria-labelledby="playoff-title" tabindex="-1">
+  <div class="modal-overlay" id="modal-tournament" role="dialog" aria-modal="true" aria-labelledby="tournament-title" tabindex="-1">
     <div class="modal" tabindex="0">
       <button class="close-btn" aria-label="Закрыть">&times;</button>
-      <h2 id="playoff-title">Плей-офф</h2>
+      <h2 id="tournament-title">Турнирная таблица</h2>
       <div class="playoff">
         <div class="bracket">
           <div class="round">
@@ -104,9 +62,7 @@
         <ul>
           <li>К участию допускаются только сотрудники сети М.Видео–Эльдорадо (МВМ).</li>
           <li>Каждая команда состоит из 5 игроков.</li>
-          <li>Турнир проходит по системе группового этапа и плей-офф.</li>
-          <li>Из каждой группы в плей-офф выходят две лучшие команды.</li>
-          <li>Все матчи проходят в формате Best of 1, финал — Best of 3.</li>
+          <li>Все матчи проходят в формате Best of 3.</li>
           <li>Уважайте соперников и соблюдайте принципы честной игры.</li>
           <li>Организаторы оставляют за собой право вносить изменения в регламент.</li>
         </ul>
@@ -133,21 +89,14 @@
   </div>
 
   <script>
-    // Открытие модалок
-    const modalGroups = document.getElementById('modal-groups');
-    const modalPlayoff = document.getElementById('modal-playoff');
+    const modalTournament = document.getElementById('modal-tournament');
     const modalSponsor = document.getElementById('modal-sponsor');
     const modalRules = document.getElementById('modal-rules');
 
-    document.getElementById('open-groups').addEventListener('click', () => {
-      modalGroups.style.display = 'flex';
+    document.getElementById('open-tournament').addEventListener('click', () => {
+      modalTournament.style.display = 'flex';
       document.body.style.overflow = 'hidden';
-      modalGroups.querySelector('.modal').focus();
-    });
-    document.getElementById('open-playoff').addEventListener('click', () => {
-      modalPlayoff.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      modalPlayoff.querySelector('.modal').focus();
+      modalTournament.querySelector('.modal').focus();
     });
     document.getElementById('open-sponsor').addEventListener('click', () => {
       modalSponsor.style.display = 'flex';
@@ -159,8 +108,6 @@
       document.body.style.overflow = 'hidden';
       modalRules.querySelector('.modal').focus();
     });
-
-    // Закрытие модалок
     const closeButtons = document.querySelectorAll('.close-btn');
     closeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -170,7 +117,7 @@
       });
     });
 
-    [modalGroups, modalPlayoff, modalSponsor, modalRules].forEach(modal => {
+    [modalTournament, modalSponsor, modalRules].forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
           modal.style.display = 'none';
@@ -178,10 +125,9 @@
         }
       });
     });
-
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        [modalGroups, modalPlayoff, modalSponsor, modalRules].forEach(modal => {
+        [modalTournament, modalSponsor, modalRules].forEach(modal => {
           if (modal.style.display === 'flex') {
             modal.style.display = 'none';
             document.body.style.overflow = '';
@@ -189,10 +135,15 @@
         });
       }
     });
-
-    // Переход по кнопке "Зарегистрироваться" на Telegram-бота
     document.getElementById('register-btn').addEventListener('click', function() {
       window.open('https://t.me/MVideoDota2_bot', '_blank');
+    });
+
+    document.getElementById('stream-btn').addEventListener('click', function() {
+      window.open('https://www.twitch.tv/black__style?sr=a', '_blank'); 
+    });
+    document.getElementById('channel-btn').addEventListener('click', function() {
+      window.open('https://t.me/dota2mvideokemerovo', '_blank'); 
     });
   </script>
 </body>
